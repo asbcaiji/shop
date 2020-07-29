@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmbiss.shop.dao.DealerMapper">
+  <resultMap id="BaseResultMap" type="com.nmbiss.shop.entity.Dealer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dealer_name" jdbcType="VARCHAR" property="dealerName" />
+    <result column="dealer_password" jdbcType="VARCHAR" property="dealerPassword" />
+    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="father_id" jdbcType="VARCHAR" property="fatherId" />
+    <result column="regist_time" jdbcType="TIMESTAMP" property="registTime" />
+    <result column="grant_code" jdbcType="VARCHAR" property="grantCode" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dealer_name, dealer_password, level_name, level, phone, father_id, regist_time, 
+    grant_code, address, sex, money
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dealer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dealer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nmbiss.shop.entity.Dealer">
+    insert into dealer (id, dealer_name, dealer_password, 
+      level_name, level, phone, 
+      father_id, regist_time, grant_code, 
+      address, sex, money
+      )
+    values (#{id,jdbcType=INTEGER}, #{dealerName,jdbcType=VARCHAR}, #{dealerPassword,jdbcType=VARCHAR}, 
+      #{levelName,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{fatherId,jdbcType=VARCHAR}, #{registTime,jdbcType=TIMESTAMP}, #{grantCode,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nmbiss.shop.entity.Dealer">
+    insert into dealer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="dealerPassword != null">
+        dealer_password,
+      </if>
+      <if test="levelName != null">
+        level_name,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="fatherId != null">
+        father_id,
+      </if>
+      <if test="registTime != null">
+        regist_time,
+      </if>
+      <if test="grantCode != null">
+        grant_code,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPassword != null">
+        #{dealerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherId != null">
+        #{fatherId,jdbcType=VARCHAR},
+      </if>
+      <if test="registTime != null">
+        #{registTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grantCode != null">
+        #{grantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nmbiss.shop.entity.Dealer">
+    update dealer
+    <set>
+      <if test="dealerName != null">
+        dealer_name = #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPassword != null">
+        dealer_password = #{dealerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null">
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherId != null">
+        father_id = #{fatherId,jdbcType=VARCHAR},
+      </if>
+      <if test="registTime != null">
+        regist_time = #{registTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grantCode != null">
+        grant_code = #{grantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nmbiss.shop.entity.Dealer">
+    update dealer
+    set dealer_name = #{dealerName,jdbcType=VARCHAR},
+      dealer_password = #{dealerPassword,jdbcType=VARCHAR},
+      level_name = #{levelName,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      father_id = #{fatherId,jdbcType=VARCHAR},
+      regist_time = #{registTime,jdbcType=TIMESTAMP},
+      grant_code = #{grantCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.nmbiss.shop.entity.Dealer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dealer_name" jdbcType="VARCHAR" property="dealerName" />
+    <result column="dealer_password" jdbcType="VARCHAR" property="dealerPassword" />
+    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="father_id" jdbcType="VARCHAR" property="fatherId" />
+    <result column="regist_time" jdbcType="TIMESTAMP" property="registTime" />
+    <result column="grant_code" jdbcType="VARCHAR" property="grantCode" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dealer_name, dealer_password, level_name, level, phone, father_id, regist_time, 
+    grant_code, address, sex, money
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dealer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dealer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.nmbiss.shop.entity.Dealer">
+    insert into dealer (id, dealer_name, dealer_password, 
+      level_name, level, phone, 
+      father_id, regist_time, grant_code, 
+      address, sex, money
+      )
+    values (#{id,jdbcType=INTEGER}, #{dealerName,jdbcType=VARCHAR}, #{dealerPassword,jdbcType=VARCHAR}, 
+      #{levelName,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{fatherId,jdbcType=VARCHAR}, #{registTime,jdbcType=TIMESTAMP}, #{grantCode,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nmbiss.shop.entity.Dealer">
+    insert into dealer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="dealerPassword != null">
+        dealer_password,
+      </if>
+      <if test="levelName != null">
+        level_name,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="fatherId != null">
+        father_id,
+      </if>
+      <if test="registTime != null">
+        regist_time,
+      </if>
+      <if test="grantCode != null">
+        grant_code,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPassword != null">
+        #{dealerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherId != null">
+        #{fatherId,jdbcType=VARCHAR},
+      </if>
+      <if test="registTime != null">
+        #{registTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grantCode != null">
+        #{grantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nmbiss.shop.entity.Dealer">
+    update dealer
+    <set>
+      <if test="dealerName != null">
+        dealer_name = #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPassword != null">
+        dealer_password = #{dealerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null">
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fatherId != null">
+        father_id = #{fatherId,jdbcType=VARCHAR},
+      </if>
+      <if test="registTime != null">
+        regist_time = #{registTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="grantCode != null">
+        grant_code = #{grantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nmbiss.shop.entity.Dealer">
+    update dealer
+    set dealer_name = #{dealerName,jdbcType=VARCHAR},
+      dealer_password = #{dealerPassword,jdbcType=VARCHAR},
+      level_name = #{levelName,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      father_id = #{fatherId,jdbcType=VARCHAR},
+      regist_time = #{registTime,jdbcType=TIMESTAMP},
+      grant_code = #{grantCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
